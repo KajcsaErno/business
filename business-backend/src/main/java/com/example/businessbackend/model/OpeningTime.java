@@ -18,11 +18,11 @@ public class OpeningTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String openingTime;
-    private String closingTime;
+    private String openingHour;
+    private String closingHour;
 
-    public OpeningTime(String openingTime, String closingTime) {
-        this.openingTime = openingTime;
-        this.closingTime = closingTime;
+    public OpeningTime(String openingHour, String closingHour) {
+        this.openingHour = openingHour;
+        this.closingHour = closingHour;
     }
 }

@@ -19,7 +19,7 @@ public class BusinessAdapter {
     private OpeningTime openingTime;
 
     public BusinessDTO toDTO(Business business) {
-        BusinessDTO businessDTO = new BusinessDTO();
+        var businessDTO = new BusinessDTO();
         businessDTO.setName(business.getName());
         businessDTO.setAddress(business.getAddress());
 
@@ -43,18 +43,17 @@ public class BusinessAdapter {
         dayOfWeekMap.forEach((k, v) -> {
             Collections.sort(v);
 
-            OpeningHoursDTO openingHoursDTO = new OpeningHoursDTO();
+            var openingHoursDTO = new OpeningHoursDTO();
             if (v.size() > 1) {
-                String startDay = v.get(0).toString();
-                String lastDay = v.get(v.size() - 1).toString();
+                var startDay = v.get(0).toString();
+                var lastDay = v.get(v.size() - 1).toString();
 
                 openingHoursDTO.setDayOfWeek(startDay + " - " + lastDay);
-                openingHoursDTO.setOpeningHours(k);
 
             } else {
                 openingHoursDTO.setDayOfWeek(v.get(0).toString());
-                openingHoursDTO.setOpeningHours(k);
             }
+            openingHoursDTO.setOpeningHours(k);
             openingHoursDTOList.add(openingHoursDTO);
 //            v.forEach( days -> {
 //                System.out.println("days = " + days);
@@ -68,10 +67,10 @@ public class BusinessAdapter {
 
 
     public String getComposedKey(OpeningTime openingTime) {
-        if ("closed".equals(openingTime.getOpeningTime())) {
+        if ("closed".equals(openingTime.getOpeningHour())) {
             return "closed";
         }
-        return openingTime.getOpeningTime() + " - " + openingTime.getClosingTime();
+        return openingTime.getOpeningHour() + " - " + openingTime.getClosingHour();
 
     }
 

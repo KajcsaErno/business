@@ -25,9 +25,9 @@ public class BusinessBackendApplication {
     @Bean
     CommandLineRunner init(BusinessRepository businessRepository) {
         return args -> {
-            BusinessAdapter businessAdapter = new BusinessAdapter();
+            var businessAdapter = new BusinessAdapter();
 
-            Business leCafe = new Business();
+            var leCafe = new Business();
             leCafe.setName("Le Cafe du Marche");
             leCafe.setAddress("Rue de Conthey 17, 1950 Sion, Switzerland");
             setOpeningTimes(leCafe, DayOfWeek.MONDAY, "closed", "closed");
@@ -39,7 +39,7 @@ public class BusinessBackendApplication {
             setOpeningTimes(leCafe, DayOfWeek.SUNDAY, "11:30", "15:00");
             BusinessDTO leCafeBusinessDTO = businessAdapter.toDTO(leCafe);
 
-            Business pizzaBella = new Business();
+            var pizzaBella = new Business();
             pizzaBella.setName("Pizza Bella");
             pizzaBella.setAddress("Bulevardul Brașovului 76, Săcele 505600, Romania");
             setOpeningTimes(pizzaBella, DayOfWeek.MONDAY, "closed", "closed");
@@ -51,7 +51,7 @@ public class BusinessBackendApplication {
             setOpeningTimes(pizzaBella, DayOfWeek.SUNDAY, "12:00", "00:00");
             BusinessDTO pizzaBellaBusinessDTO = businessAdapter.toDTO(pizzaBella);
 
-            Business selmasHairport = new Business();
+            var selmasHairport = new Business();
             selmasHairport.setName("Selma`s Hairport");
             selmasHairport.setAddress("Hauptstraße 63, 71093 Weil im Schönbuch, Germany");
             setOpeningTimes(selmasHairport, DayOfWeek.MONDAY, "8:00", "16:30");
@@ -73,7 +73,7 @@ public class BusinessBackendApplication {
     }
 
     private void setOpeningTimes(Business business, DayOfWeek dayOfWeek, String openingTime, String closingTime) {
-        OpeningTime firstOpeningTime = new OpeningTime(openingTime, closingTime);
+        var firstOpeningTime = new OpeningTime(openingTime, closingTime);
 
         List<OpeningTime> openingTimesList = new ArrayList<>();
         openingTimesList.add(firstOpeningTime);
@@ -82,8 +82,8 @@ public class BusinessBackendApplication {
     }
 
     private void setOpeningTimesWithTwoTimes(Business business, DayOfWeek dayOfWeek, String openingTime1, String closingTime1, String openingTime2, String closingTime2) {
-        OpeningTime firstOpeningTime = new OpeningTime(openingTime1, closingTime1);
-        OpeningTime secondOpeningTime = new OpeningTime(openingTime2, closingTime2);
+        var firstOpeningTime = new OpeningTime(openingTime1, closingTime1);
+        var secondOpeningTime = new OpeningTime(openingTime2, closingTime2);
 
         List<OpeningTime> openingTimesList = new ArrayList<>();
         openingTimesList.add(firstOpeningTime);
